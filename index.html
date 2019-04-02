@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Задачи на работу с числами</title>
+	<link href="css/style.css" rel="stylesheet">
+	<script type="text/javascript">
+	function valid(form){
+	var A = form.value_a.value;
+	var B = form.value_b.value;
+
+	if (Number.isInteger(Number(A)) == true && Number(A) > 0) {
+		if (Number.isInteger(Number(B)) == true && Number(A) > 0) {
+
+			var num;
+			while (B) {
+				num = A % B;		
+				A = B;
+				B = num;
+			}
+			if (Math.abs(A) == 1) {
+
+			document.getElementById('result').innerHTML = 'числа ' + form.value_a.value + ' и ' + form.value_b.value + ' взаимно просты.';
+				
+			} else {
+			document.getElementById('result').innerHTML = 'числа ' + form.value_a.value + ' и ' + form.value_b.value + ' не взаимно просты.';
+			
+			}
+
+
+		} else {
+			document.getElementById('result').innerHTML = '';
+			alert("Ошибка! Значение числа B должно быть целым числом большу нуля.");
+		}
+
+
+	} else {
+		document.getElementById('result').innerHTML = '';
+		alert("Ошибка! Значение числа А должно быть целым числом больше нуля.");
+	}
+
+
+	}
+	</script>
+</head>
+<body>
+	<div class="out">
+
+		<div class="mainblock">
+
+			<div class="nav">
+				<ul id="navbar">
+					  <li><a href="index.html" class="link">Задача 1</a></li>
+					  <li><a href="pages/page2.html" class="link">Задача 2</a></li>
+					  <li><a href="pages/page3.html" class="link">Задача 3</a></li>
+					  <li><a href="pages/page4.html" class="link">Задача 4</a></li>
+					  <li><a href="pages/page5.html" class="link">Задача 5</a></li>
+					  <li><a href="pages/page6.html" class="link">Задача 6</a></li>
+					  <li><a href="pages/page7.html" class="link">Задача 7</a></li>
+					  <li><a href="pages/page8.html" class="link">Задача 8</a></li>
+					  <li><a href="pages/page9.html" class="link">Задача 9</a></li>
+					  <li><a href="pages/page10.html" class="">Задача 10</a></li> </br>
+					  <li><a href="pages/page11.html" class="link">Задача 11</a></li>
+					  <li><a href="pages/page12.html" class="link">Задача 12</a></li>
+					  <li><a href="pages/page13.html" class="link">Задача 13</a></li>
+					  <li><a href="pages/page14.html" class="link">Задача 14</a></li>
+					  <li><a href="pages/page15.html" class="">Задача 15</a></li>
+				</ul>
+			</div>
+
+			<p class="title">Задача 1.</p>
+			<p class="title">Программа, проверяющая, будут ли взаимно просты два натуральных (целых) числа.</p>
+
+		<div class="resultblock">
+			<form action="" method="post" name="z1" id="form">
+				<label class="labels" for="value_a">Введите число А: </label>
+				<input type="text" name="value_a"  id="value_a"> <br/><br/>
+
+				<label class="labels" for="value_b">Введите число B: </label>
+				<input type="text" name="value_b" id="value_b"> <br/><br/>
+
+				<input class="button" type="button" onclick="valid(document.getElementById('form'))" name="submit" value="Проверить">
+			</form>
+				<br/><br/><br/>
+			<label id="lab" for="result">Ответ:</label>
+			<span id="result"></span>
+
+		</div>
+		<div class="footer">
+			Никита Пилипчук, ИГУ ФСиР, 14-222 ВБ
+		</div>	
+		
+
+		</div>
+		
+	</div>
+
+	
+</body>
+</html>
