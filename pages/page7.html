@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Задачи на работу с числами</title>
+	<link href="../css/style.css" rel="stylesheet">
+<script type="text/javascript">
+	function valid(form){
+		var A = form.value_a.value;
+		var result = [];
+
+		if (Number.isInteger(Number(A)) == true) {
+			if (Number(A) < 5 && Number(A) > 0) {
+				var i = 0, j, s, l, b=1;
+				for (i = 2; i < 10000; i++) {
+					s = 0;
+					for (j =1; j < i; j++) {
+						if ( i % j == 0) {
+							s +=j;
+						}
+					}
+					if (s == i && b <=Number(A)) {
+						result.push(i);
+						b++;
+					}
+
+				}
+				document.getElementById('result').innerHTML = result;
+				
+			} else {
+				alert("Ошибка! Значение числа N должно быть больше 0 и меньше 5.")
+				document.getElementById('result').innerHTML = '';
+			}
+
+	} else {
+		document.getElementById('result').innerHTML = '';
+		alert("Ошибка! Значение числа N должно быть целым числом.");
+	}
+
+}
+	</script>
+	
+	
+	
+
+	</head>
+<body>
+	<div class="out">
+
+		<div class="mainblock">
+
+			<div class="nav">
+				<ul id="navbar">
+					  <li><a href="../index.html" class="link">Задача 1</a></li>
+					  <li><a href="page2.html" class="link">Задача 2</a></li>
+					  <li><a href="page3.html" class="link">Задача 3</a></li>
+					  <li><a href="page4.html" class="link">Задача 4</a></li>
+					  <li><a href="page5.html" class="link">Задача 5</a></li>
+					  <li><a href="page6.html" class="link">Задача 6</a></li>
+					  <li><a href="page7.html" class="link">Задача 7</a></li>
+					  <li><a href="page8.html" class="link">Задача 8</a></li>
+					  <li><a href="page9.html" class="link">Задача 9</a></li>
+					  <li><a href="page10.html" class="">Задача 10</a></li> </br>
+					  <li><a href="page11.html" class="link">Задача 11</a></li>
+					  <li><a href="page12.html" class="link">Задача 12</a></li>
+					  <li><a href="page13.html" class="link">Задача 13</a></li>
+					  <li><a href="page14.html" class="link">Задача 14</a></li>
+					  <li><a href="page15.html" class="">Задача 15</a></li>
+				</ul>
+			</div>
+
+			<p class="title">Задача 7.</p>
+			<p class="title">Программа выводит первые N совершенных чисел на экран. (N от 0 до 5)</p>
+
+		<div class="resultblock">
+			<form action="" method="post" name="z1" id="form">
+				<label class="labels" for="value_a">Введите число N: </label>
+				<input type="text" name="value_a"  id="value_a"> <br/><br/><br/>
+
+				<input class="button" type="button" onclick="valid(document.getElementById('form'))" name="submit" value="Вывести">
+			</form>
+				<br/><br/><br/>
+			<label id="lab" for="result">Ответ:</label>
+			<span id="result"></span>
+
+		</div>
+		<div class="footer">
+			Никита Пилипчук, ИГУ ФСиР, 14-222 ВБ
+		</div>	
+		
+
+		</div>
+		
+	</div>
+	
+</body>
+</html>

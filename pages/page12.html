@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Задачи на работу с числами</title>
+	<link href="../css/style.css" rel="stylesheet">
+	<SCRIPT LANGUAGE="JavaScript">
+ 
+function valid(x)
+{
+x1=parseInt(document.form1.ED1.value);
+y1=parseInt(document.form1.ED2.value);
+x2=parseInt(document.form1.ED3.value);
+y2=parseInt(document.form1.ED4.value);
+ 
+if (x==1) {
+	a=x1*y2;
+	 b=y1*x2;
+
+	} else {
+		a=x1*x2;
+		b=y1*y2;
+	}
+ 
+m=Math.min(a,b);
+var d=1;
+for (i=1;i<=m;i++)
+if ((a%i==0) && (b%i==0)) d=i;
+ 
+document.form1.ED5.value=a/d;
+document.form1.ED6.value=b/d;
+};
+ 
+</SCRIPT>
+
+	
+	
+
+	</head>
+<body>
+	<div class="out">
+
+		<div class="mainblock">
+
+			<div class="nav">
+				<ul id="navbar">
+					  <li><a href="../index.html" class="link">Задача 1</a></li>
+					  <li><a href="page2.html" class="link">Задача 2</a></li>
+					  <li><a href="page3.html" class="link">Задача 3</a></li>
+					  <li><a href="page4.html" class="link">Задача 4</a></li>
+					  <li><a href="page5.html" class="link">Задача 5</a></li>
+					  <li><a href="page6.html" class="link">Задача 6</a></li>
+					  <li><a href="page7.html" class="link">Задача 7</a></li>
+					  <li><a href="page8.html" class="link">Задача 8</a></li>
+					  <li><a href="page9.html" class="link">Задача 9</a></li>
+					  <li><a href="page10.html" class="">Задача 10</a></li> </br>
+					  <li><a href="page11.html" class="link">Задача 11</a></li>
+					  <li><a href="page12.html" class="link">Задача 12</a></li>
+					  <li><a href="page13.html" class="link">Задача 13</a></li>
+					  <li><a href="page14.html" class="link">Задача 14</a></li>
+					  <li><a href="page15.html" class="">Задача 15</a></li>
+				</ul>
+			</div>
+
+			<p class="title">Задача 12.</p>
+			<p class="title">Программа находит произведение и частное двух рациональных числа.</p>
+
+		<div class="resultblock">
+
+			<table >
+				<tr>
+					<td>
+						<FORM NAME=form1>
+						<label class="labels" for="ED1">Первая дробь: </label></br>
+						<INPUT type="text" NAME="ED1" VALUE=""></br>
+						<INPUT type="text" NAME="ED2" VALUE=""></br></br>
+					</td>
+					<td>
+						<label class="labels" for="ED3">Вторая дробь: </label></br>
+						<INPUT type="text" NAME="ED3" VALUE=""></br>
+						<INPUT type="text" NAME="ED4" VALUE=""></br></br>
+					</td>
+					<td>				
+						<label class="labels" for="ED5">Ответ: </label></br>
+						<INPUT type="text" NAME="ED5"></br>
+						<INPUT type="text" NAME="ED6"></br></br>
+					</td>
+				</tr>
+			</table>
+
+
+
+				<button type="button" class="button" d="B1" ONCLICK="valid(0)">Умножить</button>
+				<button type="button" class="button" d="B2" ONCLICK="valid(1)">Разделить</button>
+			</FORM>
+
+		</div>
+		<div class="footer">
+			Никита Пилипчук, ИГУ ФСиР, 14-222 ВБ
+		</div>	
+		
+
+		</div>
+		
+	</div>
+	
+</body>
+</html>
