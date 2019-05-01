@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Задачи на работу со структурами данных</title>
+	<link href="css/style.css" rel="stylesheet">
+	<script type="text/javascript">
+	function lesson(a) {
+
+	var str2 = "";
+
+	var upper = 0;
+
+
+	for (var i = 0; i < a.length; i++) {
+
+		if (a.charAt(i) != "-") {
+			if (upper == 0) {
+				str2 += a[i];
+			} else {
+				str2 += a[i].toUpperCase();
+				upper -= 1;
+			}
+
+			
+		} else {
+
+			upper += 1;
+
+		}
+		
+	}
+	document.getElementById('result').innerHTML = str2;
+
+	}
+
+	function valid(form){
+	var A = form.value_a.value;
+	lesson(A);
+
+	
+
+
+	}
+	</script>
+</head>
+<body>
+	<div class="out">
+
+		<div class="mainblock">
+
+			<div class="nav">
+				<ul id="navbar">
+					  <li><a href="index.html" class="link">Задача 1</a></li>
+					  <li><a href="pages/page2.html" class="link">Задача 2</a></li>
+					  <li><a href="pages/page3.html" class="link">Задача 3</a></li>
+					  <li><a href="pages/page4.html" class="link">Задача 4</a></li>
+					  <li><a href="pages/page5.html" class="link">Задача 5</a></li>
+					  <li><a href="pages/page6.html" class="link">Задача 6</a></li>
+					  <li><a href="pages/page7.html" class="link">Задача 7</a></li>
+				</ul>
+			</div>
+
+			<p class="title">Задача 1.</p>
+			<p class="title">Программа, преобразует строку вида "background-color" в "backgroundColor",  т.е. удаляет знак "-" и преобразует последующую букву в заглавную. </p>
+
+		<div class="resultblock">
+			<form action="" method="post" name="z1" id="form">
+				<label class="labels" for="value_a">Введите строку: </label>
+				<input type="text" name="value_a"  id="value_a"> <br/><br/>
+
+				<input class="button" type="button" onclick="valid(document.getElementById('form'))" name="submit" value="Преобразовать">
+			</form>
+				<br/><br/><br/>
+			<label id="lab" for="result">Ответ:</label>
+			<span id="result"></span>
+
+		</div>
+		<div class="footer">
+			Никита Пилипчук, ИГУ ФСиР, 14-222 ВБ
+		</div>	
+		
+
+		</div>
+		
+	</div>
+
+	
+</body>
+</html>
