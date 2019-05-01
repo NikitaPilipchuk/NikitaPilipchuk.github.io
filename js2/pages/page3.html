@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Задачи на работу со структурами данных</title>
+	<link href="../css/style.css" rel="stylesheet">
+		<script type="text/javascript">	
+
+	function valid(form){
+	var A = form.value_a.value;
+	var array = A.split(' ');
+	var result = "";
+	var wordCount = 1;
+	var english = {
+		"я": "i",
+		"он": "he",
+		"она": "she",
+		"люблю": "like",
+		"хочу": "want",
+		"любит": "likes",
+		"хочет": "wants",
+		"спать": "sleep",
+		"есть": "eat",
+		"гулять": "walk"
+
+	};
+
+	for (var key in array) {
+
+		var str = array[key].toLowerCase();
+		for (var word in english) {
+			if (word == str) {
+				if (wordCount == 1) {
+
+					var firstWord = english[word];
+					var firstLetter = firstWord[0];
+					var firstWord2 = firstWord.replace(firstLetter, firstLetter.toUpperCase());
+					result += firstWord2 + " ";
+					wordCount = 0;
+
+				} else {					
+					result += english[word] + " ";
+
+				}				
+			}
+		} 			
+	}
+	document.getElementById('result').innerHTML = result;
+
+	}
+
+	</script>
+</head>
+<body>
+	<div class="out">
+
+		<div class="mainblock">
+
+			<div class="nav">
+				<ul id="navbar">
+					  <li><a href="../index.html" class="link">Задача 1</a></li>
+					  <li><a href="page2.html" class="link">Задача 2</a></li>
+					  <li><a href="page3.html" class="link">Задача 3</a></li>
+					  <li><a href="page4.html" class="link">Задача 4</a></li>
+					  <li><a href="page5.html" class="link">Задача 5</a></li>
+					  <li><a href="page6.html" class="link">Задача 6</a></li>
+					  <li><a href="page7.html" class="link">Задача 7</a></li>
+
+				</ul>
+			</div>
+
+			<p class="title">Задача 3.</p>
+			<p class="title">Программа, переводит заданную строку на английский язык.</p>
+			<p class="subt">Доступные слова: я, он, она, люблю, любит, хочу, хочет, спать, есть, гулять.</p>
+			<p class="subt">Слова можно вводить в любом регистре.</p>
+
+		<div class="resultblock">
+			<form action="" method="post" name="z1" id="form">
+				<label class="labels" for="value_a">Введите строку: </label>
+				<input type="text" name="value_a"  id="value_a"> <br/><br/><br/>
+
+				<input class="button" type="button" onclick="valid(document.getElementById('form'))" name="submit" value="Перевести">
+			</form>
+				<br/><br/><br/>
+			<label id="lab" for="result">Перевод:</label>
+			<span id="result"></span>
+
+		</div>
+		<div class="footer">
+			Никита Пилипчук, ИГУ ФСиР, 14-222 ВБ
+		</div>	
+		
+
+		</div>
+		
+	</div>
+	
+</body>
+</html>

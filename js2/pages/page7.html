@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Задачи на работу со структурами данных</title>
+	<link href="../css/style.css" rel="stylesheet">
+		<script type="text/javascript">
+			var subjects = {
+				names: "Литература, Русский язык, История, МХК, Обществознание"
+			}	
+
+		function loadSubjects() {
+			document.getElementById('result').innerHTML = subjects.names;
+		}
+
+		function valid(form){
+			var A = form.value_a.value;
+
+			var str = subjects.names;
+			var subjectsArray = str.split(", ");
+
+			var bool = subjectsArray.indexOf(A) != -1;
+
+			if (bool == true) {
+				alert("Ошибка! Предмет уже есть в списке!");
+
+			} else {
+				subjectsArray.push(A);
+				str = subjectsArray.join(", ");
+				subjects.names = str;
+				document.getElementById('result').innerHTML = subjects.names;
+				
+			}	
+		}
+
+		function del(form) {
+			var A = form.value_a.value;
+
+			var str = subjects.names;
+			var subjectsArray = str.split(", ");
+
+			var bool = subjectsArray.indexOf(A) != -1;
+
+			if (bool == true) {
+				var subjectIndex = subjectsArray.indexOf(A);
+				subjectsArray.splice(subjectIndex, 1);
+				str = subjectsArray.join(", ");
+				subjects.names = str;
+				document.getElementById('result').innerHTML = subjects.names;
+
+
+			} else {
+				alert("Ошибка! Удаление невозможно, т.к. предмета нет в списке.");
+				
+			}
+
+		}
+
+	</script>
+</head>
+<body onload="loadSubjects()">
+	<div class="out">
+
+		<div class="mainblock">
+
+			<div class="nav">
+				<ul id="navbar">
+					  <li><a href="../index.html" class="link">Задача 1</a></li>
+					  <li><a href="page2.html" class="link">Задача 2</a></li>
+					  <li><a href="page3.html" class="link">Задача 3</a></li>
+					  <li><a href="page4.html" class="link">Задача 4</a></li>
+					  <li><a href="page5.html" class="link">Задача 5</a></li>
+					  <li><a href="page6.html" class="link">Задача 6</a></li>
+					  <li><a href="page7.html" class="link">Задача 7</a></li>
+
+				</ul>
+			</div>
+
+			<p class="title">Задача 7.</p>
+			<p class="title">Программа, добавляет и удаляет предметы из объекта.</p>
+
+		<div class="resultblock">
+			<form action="" method="post" name="z1" id="form">
+				<label class="labels" for="value_a">Введите предмет: </label>
+				<input type="text" name="value_a"  id="value_a"> <br/><br/><br/>
+
+				<input class="button" type="button" onclick="valid(document.getElementById('form'))" name="submit" value="Добавить">
+
+				<input class="button" type="button" onclick="del(document.getElementById('form'))" name="submit" value="Удалить">
+			</form>
+				<br/><br/><br/>
+			<label id="lab" for="result">Список предметов: </label>
+			<span id="result"></span>
+
+		</div>
+		<div class="footer">
+			Никита Пилипчук, ИГУ ФСиР, 14-222 ВБ
+		</div>	
+		
+
+		</div>
+		
+	</div>
+	
+</body>
+</html>

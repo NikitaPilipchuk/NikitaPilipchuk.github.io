@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Задачи на работу со структурами данных</title>
+	<link href="../css/style.css" rel="stylesheet">
+	<script type="text/javascript">
+
+	function sortirovka(a, b) {
+  		if (a > b) return 1;
+  		if (a < b) return -1;
+	}	
+
+	function valid(form){
+
+		var arr1 = [9,8,7,6,5,4,3,2,1];
+		var arr2 = arr1.slice();
+		var arr3 = arr1.concat();
+
+		var arr_2 = arr2.reverse();
+		var arr_3 = arr3.sort(sortirovka);
+
+
+		document.getElementById('result').innerHTML = "</br>Первый массив: " + arr1 + "</br>Второй массив: " + arr_2 + "</br>Третий массив: " + arr_3;
+		document.getElementById('lab').innerHTML = "";
+
+	}	
+
+	</script>
+</head>
+<body>
+	<div class="out">
+
+		<div class="mainblock">
+
+			<div class="nav">
+				<ul id="navbar">
+					  <li><a href="../index.html" class="link">Задача 1</a></li>
+					  <li><a href="page2.html" class="link">Задача 2</a></li>
+					  <li><a href="page3.html" class="link">Задача 3</a></li>
+					  <li><a href="page4.html" class="link">Задача 4</a></li>
+					  <li><a href="page5.html" class="link">Задача 5</a></li>
+					  <li><a href="page6.html" class="link">Задача 6</a></li>
+					  <li><a href="page7.html" class="link">Задача 7</a></li>
+
+				</ul>
+			</div>
+
+			<p class="title">Задача 2.</p>
+			<p class="title">Программа создает две копии массива [9,8,7,6,5,4,3,2,1] разными способами</br> и меняет в них порядок на обратный так же двумя способами.</p>
+
+		<div class="resultblock">
+			<form action="" method="post" name="z1" id="form">
+
+				<input class="button" type="button" onclick="valid(document.getElementById('form'))" name="submit" value="Выполнить">
+			</form>
+				<br/><br/><br/>
+			<label id="lab" for="result">Ответ:</label>
+			<span id="result"></span>
+
+		</div>
+		<div class="footer">
+			Никита Пилипчук, ИГУ ФСиР, 14-222 ВБ
+		</div>	
+		
+
+		</div>
+		
+	</div>
+	
+</body>
+</html>

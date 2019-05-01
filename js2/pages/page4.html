@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Задачи на работу со структурами данных</title>
+	<link href="../css/style.css" rel="stylesheet">
+		<script type="text/javascript">
+
+	
+
+	function valid(form){
+		var week = {
+			1: "Понедельник",
+			2: "Вторник",
+			3: "Среда",
+			4: "Четверг",
+			5: "Пятница",
+			6: "Суббота",
+			7: "Воскресенье"
+		};
+		var date = new Date();
+		var nowDay = date.getDay();
+
+		
+
+		for (var day in week) {
+
+			if (day == nowDay) {
+				document.getElementById('result').innerHTML = week[day];
+			}
+			else if (nowDay == 0) {
+				document.getElementById('result').innerHTML = week[7];
+			}
+		}
+
+
+	
+}
+
+	</script>
+</head>
+<body>
+	<div class="out">
+
+		<div class="mainblock">
+
+			<div class="nav">
+				<ul id="navbar">
+					  <li><a href="../index.html" class="link">Задача 1</a></li>
+					  <li><a href="page2.html" class="link">Задача 2</a></li>
+					  <li><a href="page3.html" class="link">Задача 3</a></li>
+					  <li><a href="page4.html" class="link">Задача 4</a></li>
+					  <li><a href="page5.html" class="link">Задача 5</a></li>
+					  <li><a href="page6.html" class="link">Задача 6</a></li>
+					  <li><a href="page7.html" class="link">Задача 7</a></li>
+
+				</ul>
+			</div>
+
+			<p class="title">Задача 4.</p>
+			<p class="title">Программа,  создаёт объект с днями недели и выводит текущий день</p>
+
+		<div class="resultblock">
+			<form action="" method="post" name="z1" id="form">
+
+				<input class="button" type="button" onclick="valid(document.getElementById('form'))" name="submit" value="Вывести">
+			</form>
+				<br/><br/><br/>
+			<label id="lab" for="result">Текущий день недели: </label>
+			<span id="result"></span>
+
+		</div>
+		<div class="footer">
+			Никита Пилипчук, ИГУ ФСиР, 14-222 ВБ
+		</div>	
+		
+
+		</div>
+		
+	</div>
+	
+</body>
+</html>
