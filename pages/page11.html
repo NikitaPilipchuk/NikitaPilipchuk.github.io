@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Задачи на работу с числами</title>
+	<link href="../css/style.css" rel="stylesheet">
+<script type="text/javascript">
+	function valid(form){
+		var A = form.value_a.value;
+		var B = form.value_b.value;
+
+		if (Number.isInteger(Number(A)) == true && Number(A) > 0) {
+
+			if (Number.isInteger(Number(B)) == true && Number(B) > 0) {
+
+				
+				var result = [];
+				var xyz_summ = [];
+
+				for (var x = Number(A);x < Number(B); x++) {
+					for (var y = Number(A);y < Number(B); y++) {
+						for (var z = Number(A);z < Number(B); z++) {
+
+							X = Math.pow(x,2);
+							Y = Math.pow(y,2);
+							Z = Math.pow(z,2);
+							var xyz = x + y + z;				
+
+
+							if (Z == X + Y) {
+								if (xyz_summ.indexOf(xyz) == -1) {
+									var res = '(' + x + ', ' + y + ', ' + z + ')'
+									result.push(res);
+									res = '';
+									xyz_summ.push(xyz);
+																		
+								} 
+							}
+						}
+					}
+				}
+
+				document.getElementById('result').innerHTML = result;
+
+
+			} else {
+				document.getElementById('result').innerHTML = '';
+				alert("Ошибка! Значение числа M должно быть целым числом больше нуля.");
+
+			}
+
+		} else {
+			document.getElementById('result').innerHTML = '';
+			alert("Ошибка! Значение числа N должно быть целым числом больше нуля.");
+		}
+
+}
+	</script>
+	
+	
+
+	</head>
+<body>
+	<div class="out">
+
+		<div class="mainblock">
+
+			<div class="nav">
+				<ul id="navbar">
+					  <li><a href="../index.html" class="link">Задача 1</a></li>
+					  <li><a href="page2.html" class="link">Задача 2</a></li>
+					  <li><a href="page3.html" class="link">Задача 3</a></li>
+					  <li><a href="page4.html" class="link">Задача 4</a></li>
+					  <li><a href="page5.html" class="link">Задача 5</a></li>
+					  <li><a href="page6.html" class="link">Задача 6</a></li>
+					  <li><a href="page7.html" class="link">Задача 7</a></li>
+					  <li><a href="page8.html" class="link">Задача 8</a></li>
+					  <li><a href="page9.html" class="link">Задача 9</a></li>
+					  <li><a href="page10.html" class="">Задача 10</a></li> </br>
+					  <li><a href="page11.html" class="link">Задача 11</a></li>
+					  <li><a href="page12.html" class="link">Задача 12</a></li>
+					  <li><a href="page13.html" class="link">Задача 13</a></li>
+					  <li><a href="page14.html" class="link">Задача 14</a></li>
+					  <li><a href="page15.html" class="">Задача 15</a></li>
+				</ul>
+			</div>
+
+			<p class="title">Задача 11.</p>
+			<p class="title">Программа находит все различные пифагоровы тройки из интервала от N до М.</p>
+
+		<div class="resultblock">
+			<form action="" method="post" name="z1" id="form">
+				<label class="labels" for="value_a">Введите число N: </label>
+				<input type="text" name="value_a"  id="value_a"> <br/><br/>
+
+				<label class="labels" for="value_b">Введите число M: </label>
+				<input type="text" name="value_b"  id="value_b"> <br/><br/><br/>
+
+
+				<input class="button" type="button" onclick="valid(document.getElementById('form'))" name="submit" value="Найти">
+			</form>
+				<br/><br/><br/>
+			<label id="lab" for="result">Ответ:</label>
+			<span id="result"></span>
+
+		</div>
+		<div class="footer">
+			Никита Пилипчук, ИГУ ФСиР, 14-222 ВБ
+		</div>	
+		
+
+		</div>
+		
+	</div>
+	
+</body>
+</html>
