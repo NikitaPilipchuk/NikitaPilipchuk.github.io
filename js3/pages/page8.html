@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Задачи на работу с DOM</title>
+	<link href="../css/style.css" rel="stylesheet">
+	<script type="text/javascript">	
+
+	</script>
+</head>
+<body>
+	<div class="out">
+
+		<div class="mainblock">
+
+			<div class="nav">
+				<ul id="navbar">
+					  <li><a href="../page1.html" class="link">Задача 1</a></li>
+					  <li><a href="page2.html" class="link">Задача 2</a></li>
+					  <li><a href="page3.html" class="link">Задача 3</a></li>
+					  <li><a href="page4.html" class="link">Задача 4</a></li>
+					  <li><a href="page5.html" class="link">Задача 5</a></li>
+					  <li><a href="page6.html" class="link">Задача 6</a></li>
+					  <li><a href="page7.html" class="link">Задача 7</a></li>
+					  <li><a href="page8.html" class="link">Задача 8</a></li>
+					  <li><a href="page9.html" class="link">Задача 9</a></li>
+					  <li><a href="page10.html" class="link">Задача 10</a></li>
+
+				</ul>
+			</div>
+
+			<p class="title">Задача 8.</p>
+			<p class="title">Программа позволяет пользователю перетаскивать мышью изображение.</p>
+
+		
+		<div id="house">
+			
+		</div>			
+
+		
+		<div class="footer">
+			Никита Пилипчук, ИГУ ФСиР, 14-222 ВБ
+		</div>	
+		
+
+		</div>
+		
+	</div>
+
+<script>
+		dragElement(document.getElementById(("house")));
+		function dragElement(elmnt) {
+		  var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
+		  if (document.getElementById(elmnt.id + "header")) {		    
+		    document.getElementById(elmnt.id + "header").onmousedown = dragMouseDown;
+		  } else {		    
+		    elmnt.onmousedown = dragMouseDown;
+		  }
+		  function dragMouseDown(e) {
+		    e = e || window.event;		    
+		    pos3 = e.clientX;
+		    pos4 = e.clientY;
+		    document.onmouseup = closeDragElement;		    
+		    document.onmousemove = elementDrag;
+		  }
+		  function elementDrag(e) {
+		    e = e || window.event;		    
+		    pos1 = pos3 - e.clientX;
+		    pos2 = pos4 - e.clientY;
+		    pos3 = e.clientX;
+		    pos4 = e.clientY;		    
+		    elmnt.style.top = (elmnt.offsetTop - pos2) + "px";
+		    elmnt.style.left = (elmnt.offsetLeft - pos1) + "px";
+		  }
+		  function closeDragElement() {		    
+		    document.onmouseup = null;
+		    document.onmousemove = null;
+		  }
+		}
+</script>
+	
+</body>
+</html>

@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Задачи на работу с DOM</title>
+	<link href="../css/style.css" rel="stylesheet">
+<script type="text/javascript">
+function reverseStr(str) {
+    return str.split("").reverse().join("");
+}
+
+var numbsUnit = ['', 'один', 'два', 'три', 'четыре', 'пять', 'шесть', 'семь', 'восемь', 'девять', 'десять', 'одинадцать', 'двенадцать', 'тринадцать', 'четырнадцать', 'пятнадцать', 'шестнданцать', 'семнадцать', 'восемндадцать', 'девятнадцать'];
+var nubsDecs = ['', '', 'двадцать', 'тридцать', 'сорок', 'пятьдесят', 'шестьдесят', 'семьдесят', 'восемьдесят', 'девяносто']
+var numbsHund = ['', 'сто', 'двести', 'триста', 'четыреста','пятьсот', 'шестьсот', 'семьсот', 'восемьсот', 'девятьсот'];
+var numbsValue = ['', '', 'тысяч', 'миллион', 'миллиард'];
+
+var result = "";
+var lastResult ="";
+var floatResult = "";
+var resultArray = [];
+var minus = false;
+var onedec = false;
+
+
+function ConvertPart(numb) {
+	result = "";
+	numbLength = numb.length;
+	if (numbLength == 1) {
+		if (numb == 0) {
+			result = 'ноль';
+		} else {
+			result = numbsUnit[numb];
+		}	
+
+	} else if(numbLength == 2) {
+		if (numb < 20) {
+			result = numbsUnit[numb];
+		} else if (numb >= 20 && numb <100){
+			var firstLet = numb[0];
+			var secondLet = numb[1];
+			result += nubsDecs[firstLet];
+			result += ' ' + numbsUnit[secondLet];			
+		}
+
+	} else if (numbLength == 3) {
+		var firstLet = numb[0];
+		var secondLet = numb[1];
+		var thirdLet = numb[2];
+
+		result += numbsHund[firstLet];
+
+		if (secondLet == 0) {
+			result += ' ' + numbsUnit[thirdLet];
+		} else if (secondLet == 1) {
+			var sumLet = secondLet + thirdLet;
+			result += ' ' + numbsUnit[sumLet];
+		} else {
+			result += ' ' + nubsDecs[secondLet];
+			result += ' ' + numbsUnit[thirdLet];
+
+		}
+		
+	}
+
+	return result;
+
+}
+
+
+function valid(form){
+	document.getElementById('result').innerHTML = '';
+	var number = form.value_a.value;
+	var numberLength = '';
+	var floatNumberLength = '';
+	var numberCount = 1;
+	if (number[0] == '-') {
+		minus = true;
+		number = number.substring(1);
+		
+	}
+
+	if (number.indexOf('.') == -1) {
+		numberLength = number.length;
+		
+		while (numberLength > 3) {
+			numberCount++;
+			numberLength -=3;
+		}
+		var revNumber = reverseStr(number);
+		var startSymbol = 0;
+		var endSymbol = 3;
+		
+		for (var i =1; i <= numberCount; i++) {	
+
+			var numbSymbol = revNumber.substring(startSymbol, endSymbol);
+			var numb = reverseStr(numbSymbol);
+			var convertSybol = ConvertPart(numb);
+
+
+			//тут должно быть решение по добавлению величин с окончаниями.
+			if (numb != 0) {
+				if (i == 2) {
+					if (numb == 1 || numb == 101 || numb == 201 || numb == 301 || numb == 401 
+						|| numb == 501 || numb == 601 || numb == 601 || numb == 701
+						|| numb == 801 || numb == 901) {
+						 
+						convertSybol += ' ' + numbsValue[i] + 'a';
+					} else if (numb == 2 || numb == 102 || numb == 202 || numb == 302 || numb == 402 || numb == 502 
+						|| numb == 602 || numb == 702  || numb == 802 || numb == 902 || numb == 3 
+						|| numb == 103 || numb == 203 || numb == 303 || numb == 403 || numb == 503 
+						|| numb == 603 || numb == 703  || numb == 803 || numb == 903 || numb == 4
+						|| numb == 104 || numb == 204 || numb == 304 || numb == 404 || numb == 504 
+						|| numb == 604 || numb == 704  || numb == 804 || numb == 904) {
+						convertSybol += ' ' + numbsValue[i] + 'и';
+					} else {
+						convertSybol += ' ' + numbsValue[i];
+					}
+
+					if (numb.length == 3 && numb[1] != 1 || numb.length == 2 && numb[0] != 1){
+						if (numb.length == 3 && numb[2] == 1 || numb.length == 2 && numb[1] == 1) {
+							convertSybol = convertSybol.replace('тысяч', 'тысяча');
+						}
+					}
+
+					if (numb.length == 3 && numb[1] != 1 || numb.length == 2 && numb[0] != 1){
+						if (numb.length == 3 && numb[2] == 2 || numb.length == 2 && numb[1] == 2) {
+							convertSybol = convertSybol.replace('тысяч', 'тысячи');
+						}
+					}
+
+					if (numb.length == 3 && numb[1] != 1 || numb.length == 2 && numb[0] != 1){
+						if (numb.length == 3 && numb[2] == 3 || numb.length == 2 && numb[1] == 3) {
+							convertSybol = convertSybol.replace('тысяч', 'тысячи');
+						}
+					}
+
+					if (numb.length == 3 && numb[1] != 1 || numb.length == 2 && numb[0] != 1){
+						if (numb.length == 3 && numb[2] == 4 || numb.length == 2 && numb[1] == 4) {
+							convertSybol = convertSybol.replace('тысяч', 'тысячи');
+						}
+					}
+
+					convertSybol = convertSybol.replace('один', 'одна');
+					convertSybol = convertSybol.replace('два', 'две');
+				} else if (i == 3 || i == 4) {
+					if (numb == 1 || numb == 101 || numb == 201 || numb == 301 || numb == 401 
+						|| numb == 501 || numb == 601 || numb == 601 || numb == 701
+						|| numb == 801 || numb == 901) {
+						convertSybol += ' ' + numbsValue[i];
+					} else if (numb == 2 || numb == 102 || numb == 202 || numb == 302 
+						|| numb == 402 || numb == 502|| numb == 602 || numb == 702  || numb == 802 
+						|| numb == 902 || numb == 3 
+						|| numb == 103 || numb == 203 || numb == 303 || numb == 403 || numb == 503 
+						|| numb == 603 || numb == 703  || numb == 803 || numb == 903 || numb == 4
+						|| numb == 104 || numb == 204 || numb == 304 || numb == 404 || numb == 504 
+						|| numb == 604 || numb == 704  || numb == 804 || numb == 904) {
+
+						convertSybol += ' ' + numbsValue[i] + 'а';
+					} else {
+						convertSybol += ' ' + numbsValue[i] + 'ов';
+					}
+
+
+					if (numb.length == 3 && numb[1] != 1 || numb.length == 2 && numb[0] != 1){
+						if (numb.length == 3 && numb[2] == 1 || numb.length == 2 && numb[1] == 1) {
+							convertSybol = convertSybol.replace('ов', '');
+						}
+					}
+
+					if (numb.length == 3 && numb[1] != 1 || numb.length == 2 && numb[0] != 1){
+						if (numb.length == 3 && numb[2] == 2 || numb.length == 2 && numb[1] == 2) {
+							convertSybol = convertSybol.replace('ов', 'а');
+						}
+					}
+
+					if (numb.length == 3 && numb[1] != 1 || numb.length == 2 && numb[0] != 1){
+						if (numb.length == 3 && numb[2] == 3 || numb.length == 2 && numb[1] == 3) {
+							convertSybol = convertSybol.replace('ов', 'а');
+						}
+					}
+
+					if (numb.length == 3 && numb[1] != 1 || numb.length == 2 && numb[0] != 1){
+						if (numb.length == 3 && numb[2] == 4 || numb.length == 2 && numb[1] == 4) {
+							convertSybol = convertSybol.replace('ов', 'а');
+						}
+					}
+				} 				
+			}
+
+			resultArray.push(convertSybol);
+			
+			startSymbol += 3;
+			endSymbol += 3;			
+			result = '';		
+		}
+		lastResult += resultArray.reverse().join(' ');	
+
+	} else {
+
+		// ЕСЛИ ЧИСЛО ДРОБЬ
+		var numberIndex = number.indexOf('.');
+		var numberInt = number.substring(0,numberIndex);
+		var numberFloat = number.substring(numberIndex+1);
+
+		numberLength = numberInt.length;
+		
+		while (numberLength > 3) {
+			numberCount++;
+			numberLength -=3;
+		}
+		var revNumber = reverseStr(numberInt);
+		var startSymbol = 0;
+		var endSymbol = 3;
+		
+		for (var i =1; i <= numberCount; i++) {	
+
+			var numbSymbol = revNumber.substring(startSymbol, endSymbol);
+			var numb = reverseStr(numbSymbol);
+			var convertSybol = ConvertPart(numb);
+
+			if (numb != 0) {
+				if (i == 2) {
+					if (numb == 1 || numb == 101 || numb == 201 || numb == 301 || numb == 401 
+						|| numb == 501 || numb == 601 || numb == 601 || numb == 701
+						|| numb == 801 || numb == 901) {
+						 
+						convertSybol += ' ' + numbsValue[i] + 'a';
+					} else if (numb == 2 || numb == 102 || numb == 202 || numb == 302 || numb == 402 || numb == 502 
+						|| numb == 602 || numb == 702  || numb == 802 || numb == 902 || numb == 3 
+						|| numb == 103 || numb == 203 || numb == 303 || numb == 403 || numb == 503 
+						|| numb == 603 || numb == 703  || numb == 803 || numb == 903 || numb == 4
+						|| numb == 104 || numb == 204 || numb == 304 || numb == 404 || numb == 504 
+						|| numb == 604 || numb == 704  || numb == 804 || numb == 904) {
+						convertSybol += ' ' + numbsValue[i] + 'и';
+					} else {
+						convertSybol += ' ' + numbsValue[i];
+					}
+
+					if (numb.length == 3 && numb[1] != 1 || numb.length == 2 && numb[0] != 1){
+						if (numb.length == 3 && numb[2] == 1 || numb.length == 2 && numb[1] == 1) {
+							convertSybol = convertSybol.replace('тысяч', 'тысяча');
+						}
+					}
+
+					if (numb.length == 3 && numb[1] != 1 || numb.length == 2 && numb[0] != 1){
+						if (numb.length == 3 && numb[2] == 2 || numb.length == 2 && numb[1] == 2) {
+							convertSybol = convertSybol.replace('тысяч', 'тысячи');
+						}
+					}
+
+					if (numb.length == 3 && numb[1] != 1 || numb.length == 2 && numb[0] != 1){
+						if (numb.length == 3 && numb[2] == 3 || numb.length == 2 && numb[1] == 3) {
+							convertSybol = convertSybol.replace('тысяч', 'тысячи');
+						}
+					}
+
+					if (numb.length == 3 && numb[1] != 1 || numb.length == 2 && numb[0] != 1){
+						if (numb.length == 3 && numb[2] == 4 || numb.length == 2 && numb[1] == 4) {
+							convertSybol = convertSybol.replace('тысяч', 'тысячи');
+						}
+					}
+
+					convertSybol = convertSybol.replace('один', 'одна');
+					convertSybol = convertSybol.replace('два', 'две');
+				} else if (i == 3 || i == 4) {
+					if (numb == 1 || numb == 101 || numb == 201 || numb == 301 || numb == 401 
+						|| numb == 501 || numb == 601 || numb == 601 || numb == 701
+						|| numb == 801 || numb == 901) {
+						convertSybol += ' ' + numbsValue[i];
+					} else if (numb == 2 || numb == 102 || numb == 202 || numb == 302 
+						|| numb == 402 || numb == 502|| numb == 602 || numb == 702  || numb == 802 
+						|| numb == 902 || numb == 3 
+						|| numb == 103 || numb == 203 || numb == 303 || numb == 403 || numb == 503 
+						|| numb == 603 || numb == 703  || numb == 803 || numb == 903 || numb == 4
+						|| numb == 104 || numb == 204 || numb == 304 || numb == 404 || numb == 504 
+						|| numb == 604 || numb == 704  || numb == 804 || numb == 904) {
+
+						convertSybol += ' ' + numbsValue[i] + 'а';
+					} else {
+						convertSybol += ' ' + numbsValue[i] + 'ов';
+					}
+
+
+					if (numb.length == 3 && numb[1] != 1 || numb.length == 2 && numb[0] != 1){
+						if (numb.length == 3 && numb[2] == 1 || numb.length == 2 && numb[1] == 1) {
+							convertSybol = convertSybol.replace('ов', '');
+						}
+					}
+
+					if (numb.length == 3 && numb[1] != 1 || numb.length == 2 && numb[0] != 1){
+						if (numb.length == 3 && numb[2] == 2 || numb.length == 2 && numb[1] == 2) {
+							convertSybol = convertSybol.replace('ов', 'а');
+						}
+					}
+
+					if (numb.length == 3 && numb[1] != 1 || numb.length == 2 && numb[0] != 1){
+						if (numb.length == 3 && numb[2] == 3 || numb.length == 2 && numb[1] == 3) {
+							convertSybol = convertSybol.replace('ов', 'а');
+						}
+					}
+
+					if (numb.length == 3 && numb[1] != 1 || numb.length == 2 && numb[0] != 1){
+						if (numb.length == 3 && numb[2] == 4 || numb.length == 2 && numb[1] == 4) {
+							convertSybol = convertSybol.replace('ов', 'а');
+						}
+					}
+				} else if (i == 1) {
+					var rev = reverseStr(numb);
+					if (rev[0] == 1 && rev[1] != 1) {
+						convertSybol = convertSybol.replace('один', 'одна');
+						onedec = true;
+					} else if (rev[0] == 2 && rev[1] != 1) {
+						convertSybol = convertSybol.replace('два', 'две');						
+					}
+				} 				
+			}
+
+			resultArray.push(convertSybol);
+			
+			startSymbol += 3;
+			endSymbol += 3;			
+			result = '';		
+		}
+
+		if (onedec == false) {
+			lastResult += resultArray.reverse().join(' ') + ' целых ';
+		} else {
+			lastResult += resultArray.reverse().join(' ') + ' целая ';
+			onedec = false;
+		}
+
+		
+
+
+		// ТУТ НАЧИНАЕТСЯ ДРОБНАЯ ЧАСТЬ
+		floatNumberLength = numberFloat.length
+		if (floatNumberLength == 1) {
+			var flnumb = ConvertPart(numberFloat);
+			if (numberFloat == 1) {
+				floatResult += 'одна десятая';
+			} else if (numberFloat == 2) {
+				floatResult += 'две десятых';
+			} else {
+				floatResult += flnumb + ' десятых';
+			}
+		} else if (floatNumberLength == 2) {
+			var flnumb = "";
+			if (numberFloat[0] == 0) {
+				var zeroNumb = numberFloat[1];
+				flnumb = ConvertPart(zeroNumb);
+			} else {
+				flnumb = ConvertPart(numberFloat);
+			} 
+			
+			if (numberFloat == 1 || numberFloat == 21 ||  numberFloat == 31 ||  numberFloat == 41 ||
+			 numberFloat == 51 || numberFloat == 61 || numberFloat == 71 || numberFloat == 81 || 
+			 numberFloat == 91){
+			 	flnumb = flnumb.replace('один', 'одна');
+			 	floatResult += flnumb + ' сотая'; 
+			 }
+
+			 if (numberFloat == 2 || numberFloat == 22 ||  numberFloat == 32 ||  numberFloat == 42 ||
+			 numberFloat == 52 || numberFloat == 62 || numberFloat == 72 || numberFloat == 82 || 
+			 numberFloat == 92){
+			 	flnumb = flnumb.replace('два', 'две');
+			 	floatResult += flnumb + ' сотых'; 
+			 } else {
+			 	floatResult += flnumb + ' сотых'; 
+			 }
+		} else if (floatNumberLength == 3) {
+			var flnumb = "";
+
+			if (numberFloat[0] == 0 && numberFloat[1] == 0) {
+				var zeroNumb = numberFloat[2];
+				flnumb = ConvertPart(zeroNumb);
+			} else if (numberFloat[0] == 0) {
+				var zeroNumb = numberFloat[1] + numberFloat[2];
+				flnumb = ConvertPart(zeroNumb);
+			} else {
+				flnumb = ConvertPart(numberFloat);
+			}
+
+			//var numberFloatReverse = numberFloat.
+			if (reverseStr(numberFloat)[0] == 1 && numberFloat[1] != 1) {
+				flnumb = flnumb.replace('один', 'одна');
+				floatResult += flnumb + ' тысячная';
+			} else if (reverseStr(numberFloat)[0] == 2 && numberFloat[1] != 1) {
+				flnumb = flnumb.replace(/два/g, 'две');
+				floatResult += flnumb + ' тысячных';
+			} else {
+				floatResult += flnumb + ' тысячных';
+			}
+		} 		
+		lastResult += floatResult;
+	}
+
+	if (minus == false) {
+		document.getElementById('result').innerHTML = lastResult;
+		floatResult = "";
+		resultArray = [];
+		lastResult = '';
+	} else {
+		document.getElementById('result').innerHTML = 'минус ' + lastResult;
+		floatResult = "";
+		resultArray = [];
+		lastResult = '';
+	}			
+
+}
+
+
+
+</script>
+</head>
+<body>
+	<div class="out">
+
+		<div class="mainblock">
+
+			<div class="nav">
+				<ul id="navbar">
+					  <li><a href="../page1.html" class="link">Задача 1</a></li>
+					  <li><a href="page2.html" class="link">Задача 2</a></li>
+					  <li><a href="page3.html" class="link">Задача 3</a></li>
+					  <li><a href="page4.html" class="link">Задача 4</a></li>
+					  <li><a href="page5.html" class="link">Задача 5</a></li>
+					  <li><a href="page6.html" class="link">Задача 6</a></li>
+					  <li><a href="page7.html" class="link">Задача 7</a></li>
+					  <li><a href="page8.html" class="link">Задача 8</a></li>
+					  <li><a href="page9.html" class="link">Задача 9</a></li>
+					  <li><a href="page10.html" class="link">Задача 10</a></li>
+
+				</ul>
+			</div>
+
+			<p class="title">Задача 9.</p>
+			<p class="title">Программа, записывает введеное число словами.</p>
+			<P class="subt">Диапоазон от -999999999999.999 до 999999999999.999 </P>
+
+		<div class="resultblock">
+			<form action="" method="post" name="z1" id="form">
+				<label class="labels" for="value_a">Введите число: </label>
+				<input type="text" name="value_a"  id="value_a"> <br/><br/><br/>
+
+				<input class="button" type="button" onclick="valid(document.getElementById('form'))" name="submit" value="Выполнить">
+			</form>
+				<br/><br/><br/>
+			<label id="lab" for="result">Ответ:</label>
+			<span id="result"></span>
+
+		</div>
+		<div class="footer">
+			Никита Пилипчук, ИГУ ФСиР, 14-222 ВБ
+		</div>	
+		
+
+		</div>
+		
+	</div>
+	
+</body>
+</html>

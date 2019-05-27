@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Задачи на работу с DOM</title>
+	<link href="../css/style.css" rel="stylesheet">
+		<script type="text/javascript">	
+		</script>
+</head>
+<body>
+	<div class="out">
+
+		<div class="mainblock">
+
+			<div class="nav">
+				<ul id="navbar">
+					  <li><a href="../page1.html" class="link">Задача 1</a></li>
+					  <li><a href="page2.html" class="link">Задача 2</a></li>
+					  <li><a href="page3.html" class="link">Задача 3</a></li>
+					  <li><a href="page4.html" class="link">Задача 4</a></li>
+					  <li><a href="page5.html" class="link">Задача 5</a></li>
+					  <li><a href="page6.html" class="link">Задача 6</a></li>
+					  <li><a href="page7.html" class="link">Задача 7</a></li>
+					  <li><a href="page8.html" class="link">Задача 8</a></li>
+					  <li><a href="page9.html" class="link">Задача 9</a></li>
+					  <li><a href="page10.html" class="link">Задача 10</a></li>
+
+				</ul>
+			</div>
+
+			<p class="title">Задача 7.</p>
+			<p class="title">Программа реализовывает линейное движение.</p>
+
+		
+			<div class="resultblock">
+				<div id="car" style="left: 0">
+					<img src="../img/car.png" width="80px">
+				</div>
+			</div></br></br></br>
+			<center><input class="button" type="button" onclick="linearMotion('0')" name="submit" value="Начать">
+			<input class="button" type="button" onclick="linearMotion('1')" name="submit" value="Остановить">
+			<input class="button" type="button" onclick="linearMotion('2')" name="submit" value="В начало">  </center>
+
+
+		<div class="footer">
+			Никита Пилипчук, ИГУ ФСиР, 14-222 ВБ
+		</div>	
+		
+
+		</div>
+		
+	</div>
+
+	<script type="text/javascript">		
+		var someCar = document.getElementById('car');
+		var timerId;
+		var signal = 1;
+		
+		function linearMotion(elem){
+
+			if (elem == '0') {
+
+				if (signal == '1' || signal == '2') {
+					timerId = setInterval(function() {
+						var newCar = someCar.style.marginLeft
+						if (newCar.indexOf("px") == -1) {					
+							var value = newCar + 10;					
+							someCar.style.marginLeft = value + "px";
+						} else {
+							var letter = newCar.indexOf("p");
+							var newCar2 = newCar.substring(0,letter);
+							var value2 = Number(newCar2) + 10;
+							someCar.style.marginLeft = value2 + "px";
+						}
+					}, 100);
+					signal = 0;
+				} else {
+					alert("Ошибка! Машина уже в движение!")
+				}
+
+			} else if (elem == '1') {
+				if (signal == 0 || signal == 2) {
+					setTimeout(function() {
+  						clearInterval(timerId);  				
+					},0);
+					signal = 1;
+				} else {
+					alert("Ошибка! Машина и так стоит!")
+				}				
+
+			} else {
+				someCar.style.marginLeft = 0;
+				signal = 2;
+			}
+		}
+	</script>
+	
+</body>
+</html>

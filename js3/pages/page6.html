@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Задачи на работу с DOM</title>
+	<link href="../css/style.css" rel="stylesheet">
+		<script type="text/javascript">
+		var timerId;
+		var signal = 1;	
+
+		function borderColor(elem){
+			
+			if (elem == '0') {
+				if (signal == 1) {
+					timerId = setInterval(function() {
+						var someElement = document.getElementById("color");
+						var color_r = Math.floor(Math.random() * 366);
+						var color_g = Math.floor(Math.random() * 366);
+						var color_b = Math.floor(Math.random() * 366);
+						var color_rgb = "rgb(" + color_r + "," + color_g + "," + color_b + ")";
+						someElement.style.borderColor = color_rgb; 
+					}, 500);
+					signal = 0;
+				} else {
+					alert("Ошибка! Кнопка уже нажата!");
+				}
+
+
+			} else {
+				setTimeout(function() {
+  					clearInterval(timerId);  				
+				},0);
+				signal = 1;
+
+			}
+			
+		}
+
+
+	</script>
+</head>
+<body>
+	<div class="out">
+
+		<div class="mainblock">
+
+			<div class="nav">
+				<ul id="navbar">
+					  <li><a href="../page1.html" class="link">Задача 1</a></li>
+					  <li><a href="page2.html" class="link">Задача 2</a></li>
+					  <li><a href="page3.html" class="link">Задача 3</a></li>
+					  <li><a href="page4.html" class="link">Задача 4</a></li>
+					  <li><a href="page5.html" class="link">Задача 5</a></li>
+					  <li><a href="page6.html" class="link">Задача 6</a></li>
+					  <li><a href="page7.html" class="link">Задача 7</a></li>
+					  <li><a href="page8.html" class="link">Задача 8</a></li>
+					  <li><a href="page9.html" class="link">Задача 9</a></li>
+					  <li><a href="page10.html" class="link">Задача 10</a></li>
+
+				</ul>
+			</div>
+
+			<p class="title">Задача 6.</p>
+			<p class="title">Программа делает цвет рамки произвольным.</p>
+
+			<center><div id="color" class="colorBorder"> <p class="colorText">Светомузыка</p></div><center>
+			
+			<br><br><form action="" method="post" name="z1" id="form">
+
+				<center><input class="button" type="button" onclick="borderColor('0')" name="submit" value="Начать">
+				<input class="button" type="button" onclick="borderColor('1')" name="submit" value="Остановить"> </center>
+			</form>
+				<br/><br/><br/>
+
+		<div class="footer">
+			Никита Пилипчук, ИГУ ФСиР, 14-222 ВБ
+		</div>	
+		
+
+		</div>
+		
+	</div>
+	
+</body>
+</html>

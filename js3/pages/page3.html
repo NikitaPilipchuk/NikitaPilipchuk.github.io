@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Задачи на работу с DOM</title>
+	<link href="../css/style.css" rel="stylesheet">
+		<script type="text/javascript">	
+		function isNumeric(n) {
+    
+   			return !isNaN(parseFloat(n)) && isFinite(n);
+		}
+
+		function add(form){
+			var A = form.value_a.value;
+			var B = form.value_b.value;
+			if (isNumeric(A)) {
+				if (isNumeric(B)) {
+					document.getElementById('result').innerHTML = Number(A) + Number(B);
+				} else {
+					alert("Ошибка! Значение числа B должно быть числовым.")
+				}
+			} else {
+				alert("Ошибка! Значение числа А должно быть числовым.")
+			}			
+		}
+
+		function sub(form){
+			var A = form.value_a.value;
+			var B = form.value_b.value;
+			if (isNumeric(A)) {
+				if (isNumeric(B)) {
+					document.getElementById('result').innerHTML = Number(A) - Number(B);
+				} else {
+					alert("Ошибка! Значение числа B должно быть числовым.")
+				}
+			} else {
+				alert("Ошибка! Значение числа А должно быть числовым.")
+			}			
+		}
+
+		function multy(form){
+			var A = form.value_a.value;
+			var B = form.value_b.value;
+			if (isNumeric(A)) {
+				if (isNumeric(B)) {
+					document.getElementById('result').innerHTML = Number(A) * Number(B);
+				} else {
+					alert("Ошибка! Значение числа B должно быть числовым.")
+				}
+			} else {
+				alert("Ошибка! Значение числа А должно быть числовым.")
+			}			
+		}
+
+		function div(form){
+			var A = form.value_a.value;
+			var B = form.value_b.value;
+			if (isNumeric(A)) {
+				if (isNumeric(B) && Number(B) != 0) {
+					document.getElementById('result').innerHTML = Number(A) / Number(B);
+				} else {
+					alert("Ошибка! Значение числа B должно быть числовым и равным нулю.")
+				}
+			} else {
+				alert("Ошибка! Значение числа А должно быть числовым.")
+			}
+		}
+
+		function clearValues(form) {
+			document.getElementById('result').innerHTML = "";
+			form.value_a.value = "";
+			form.value_b.value = "";
+		}			
+		
+
+	</script>
+</head>
+<body>
+	<div class="out">
+
+		<div class="mainblock">
+
+			<div class="nav">
+				<ul id="navbar">
+					  <li><a href="../page1.html" class="link">Задача 1</a></li>
+					  <li><a href="page2.html" class="link">Задача 2</a></li>
+					  <li><a href="page3.html" class="link">Задача 3</a></li>
+					  <li><a href="page4.html" class="link">Задача 4</a></li>
+					  <li><a href="page5.html" class="link">Задача 5</a></li>
+					  <li><a href="page6.html" class="link">Задача 6</a></li>
+					  <li><a href="page7.html" class="link">Задача 7</a></li>
+					  <li><a href="page8.html" class="link">Задача 8</a></li>
+					  <li><a href="page9.html" class="link">Задача 9</a></li>
+					  <li><a href="page10.html" class="link">Задача 10</a></li>
+
+				</ul>
+			</div>
+
+			<p class="title">Задача 3.</p>
+			<p class="title">Программа калькулятор, производящая основные арифметические операции.</p>
+
+		<div class="resultblock">
+			<form action="" method="post" name="z1" id="form">
+				<label class="labels" for="value_a">Введите число А: </label>
+				<input type="text" name="value_a"  id="value_a"> <br/><br/><br/>
+
+				<label class="labels" for="value_b">Введите число B: </label>
+				<input type="text" name="value_b"  id="value_b"> <br/><br/><br/>
+
+				<input class="button" type="button" onclick="add(document.getElementById('form'))" name="submit" value="+">
+				<input class="button" type="button" onclick="sub(document.getElementById('form'))" name="submit" value="-">
+				<input class="button" type="button" onclick="multy(document.getElementById('form'))" name="submit" value="*">
+				<input class="button" type="button" onclick="div(document.getElementById('form'))" name="submit" value="/"></br></br>
+				<input class="button" type="button" onclick="clearValues(document.getElementById('form'))" name="submit" value="Отчистить">
+			</form>
+				<br/>
+			<label id="lab" for="result">Ответ:</label>
+			<span id="result"></span>
+
+		</div>
+		<div class="footer">
+			Никита Пилипчук, ИГУ ФСиР, 14-222 ВБ
+		</div>	
+		
+
+		</div>
+		
+	</div>
+	
+</body>
+</html>

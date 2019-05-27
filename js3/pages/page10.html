@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Задачи на работу с DOM</title>
+	<link href="../css/style.css" rel="stylesheet">
+		<script type="text/javascript">	
+
+		function valid(form){
+			var text = form.value_a.value;
+			var rt = document.getElementById('divText').firstChild;
+			var content = rt.nodeValue;
+			
+			if (~content.indexOf(text)) {
+				if (document.createRange) {
+         		var rng = document.createRange();
+          		rng.setStart(rt, content.indexOf(text));
+          		rng.setEnd(rt, content.indexOf(text) + text.length);
+          		var highlightDiv = document.createElement('span');
+         		highlightDiv.style.backgroundColor = 'yellow';
+          		rng.surroundContents(highlightDiv);
+        } else
+          alert('Вероятно, у вас IE8-, смотрите реализацию TextRange ниже');
+
+	
+
+			} else {
+				alert("Совпадений не найдено!");
+			}
+
+
+	
+
+
+		}
+
+	</script>
+</head>
+<body>
+	<div class="out">
+
+		<div class="mainblock">
+
+			<div class="nav">
+				<ul id="navbar">
+					  <li><a href="../page1.html" class="link">Задача 1</a></li>
+					  <li><a href="page2.html" class="link">Задача 2</a></li>
+					  <li><a href="page3.html" class="link">Задача 3</a></li>
+					  <li><a href="page4.html" class="link">Задача 4</a></li>
+					  <li><a href="page5.html" class="link">Задача 5</a></li>
+					  <li><a href="page6.html" class="link">Задача 6</a></li>
+					  <li><a href="page7.html" class="link">Задача 7</a></li>
+					  <li><a href="page8.html" class="link">Задача 8</a></li>
+					  <li><a href="page9.html" class="link">Задача 9</a></li>
+					  <li><a href="page10.html" class="link">Задача 10</a></li>
+
+				</ul>
+			</div>
+
+			<p class="title">Задача 10.</p>
+			<p class="title">Программа реализовывает поиск в текстовой области.</p>
+
+		<div class="searchBlock">
+			<form action="" method="post" name="z1" id="form">
+				<label class="labels" for="value_a">Введите слово: </label> </br>
+				<input type="text" name="value_a"  id="value_a"> <br/></br>
+				 <div id="divText" style="border:1px dashed #999; color:#666; background:#FFF; padding:2px 5px; margin:10px 0;">
+    				Американский IT-гигант Google приостанавливает отношения с крупнейшим производителем мобильных телефонов в КНР Huawei. Об аналогичных решениях заявили представители ещё нескольких компаний из США. Таким образом, владельцы китайских гаджетов теперь не смогут обновлять мобильную операционную систему Android, но устройства продолжат функционировать вместе со всеми установленными на них приложениями. Однако при производстве новой продукции Huawei уже не сможет устанавливать на неё программы Google. </br>
+    				Американская корпорация Google приостановила взаимоотношения с китайской телекоммуникационной компанией Huawei после того, как власти США внесли её в чёрный список предприятий, угрожающих национальной безопасности страны. Об этом сообщает агентство Reuters со ссылкой на источники.</br>
+    				Таким образом, Huawei потеряет доступ к программному обеспечению Google. В частности, смартфоны этой китайской компании не смогут получать обновления мобильной операционной системы Android. При производстве новых гаджетов китайская компания не сможет устанавливать на них программы, разработанные американской корпорацией, такие как магазин приложений Google play или электронную почту Gmail.
+ 				 </div>
+
+
+				<input class="button" type="button" onclick="valid(document.getElementById('form'))" name="submit" value="Найти">
+			</form>
+
+
+		</div>
+		<div class="footer">
+			Никита Пилипчук, ИГУ ФСиР, 14-222 ВБ
+		</div>	
+		
+
+		</div>
+		
+	</div>
+	
+</body>
+</html>

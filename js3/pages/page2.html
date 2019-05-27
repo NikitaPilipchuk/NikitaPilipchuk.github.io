@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Задачи на работу с DOM</title>
+	<link href="../css/style.css" rel="stylesheet">
+	<script type="text/javascript">
+		function multiplyTable() {
+			document.write("<table id= \"multy\" border= \"1\" cellspacing= \"0\" cellpadding= \"2 \"align= \"center\" >")
+			for (var i = 1; i <= 10; i++)
+			{
+				document.write("<tr>");
+	   			for (var j = 1; j <= 10; j++)
+	    		{
+	    			document.write("<td>" + j + "&times;" + i + "=" + (i * j) + "</td>")
+	    		}
+				document.write("</tr>")
+			}
+			document.write("</table>")
+		}
+	</script>
+</head>
+<body>
+	<div class="out">
+
+		<div class="mainblock">
+
+			<div class="nav">
+				<ul id="navbar">
+					  <li><a href="../page1.html" class="link">Задача 1</a></li>
+					  <li><a href="page2.html" class="link">Задача 2</a></li>
+					  <li><a href="page3.html" class="link">Задача 3</a></li>
+					  <li><a href="page4.html" class="link">Задача 4</a></li>
+					  <li><a href="page5.html" class="link">Задача 5</a></li>
+					  <li><a href="page6.html" class="link">Задача 6</a></li>
+					  <li><a href="page7.html" class="link">Задача 7</a></li>
+					  <li><a href="page8.html" class="link">Задача 8</a></li>
+					  <li><a href="page9.html" class="link">Задача 9</a></li>
+					  <li><a href="page10.html" class="link">Задача 10</a></li>
+
+				</ul>
+			</div>
+
+			<p class="title">Задача 2.</p>
+			<p class="title">Программа, в которой отображается таблица умножения для чисел от 1 до 10.</p> </br> </br>
+			<script>
+				multiplyTable();
+			</script>
+
+
+
+		
+			<div class="footer">
+				Никита Пилипчук, ИГУ ФСиР, 14-222 ВБ
+			</div>	
+		
+
+		</div>
+		
+	</div>
+	
+</body>
+</html>

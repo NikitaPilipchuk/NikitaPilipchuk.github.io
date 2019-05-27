@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Задачи на работу с DOM</title>
+	<link href="../css/style.css" rel="stylesheet">
+		<script type="text/javascript">		
+
+
+		function valid(){
+
+			var price = 0;
+			var kkal = 0;
+
+			var rad=document.getElementsByName('r1');
+    		for (var i=0;i<rad.length; i++) {
+        		if (rad[i].checked) {
+            		if (rad[i].value == "small") {
+            			kkal += 20;
+            			price += 50;
+            		} else if (rad[i].value == "big") {
+            			kkal += 40;
+            			price += 100;           			
+            		}
+        		}
+    		}
+
+    		var rad2=document.getElementsByName('r2');
+    		for (var i=0;i<rad2.length; i++) {
+        		if (rad2[i].checked) {
+            		if (rad2[i].value == "cheese") {
+            			kkal += 20;
+            			price += 10;
+            		} else if (rad2[i].value == "salad") {
+            			kkal += 5;
+            			price += 20;           			
+            		} else if (rad2[i].value == "potato") {
+            			kkal += 10;
+            			price += 15;           			
+            		}
+        		}
+    		}
+
+    		var rad3=document.getElementsByName('r3');
+    		for (var i=0;i<rad3.length; i++) {
+        		if (rad3[i].checked) {
+            		if (rad3[i].value == "seas") {
+            			kkal += 0;
+            			price += 15;
+            		} else if (rad3[i].value == "mayon") {
+            			kkal += 5;
+            			price += 20;           			
+            		} 
+        		}
+    		}
+
+    		document.getElementById('price').innerHTML = price + " тугриков";
+    		document.getElementById('kkal').innerHTML = kkal + " калорий";
+
+
+		}
+
+	</script>
+</head>
+<body>
+	<div class="out">
+
+		<div class="mainblock">
+
+			<div class="nav">
+				<ul id="navbar">
+					  <li><a href="../page1.html" class="link">Задача 1</a></li>
+					  <li><a href="page2.html" class="link">Задача 2</a></li>
+					  <li><a href="page3.html" class="link">Задача 3</a></li>
+					  <li><a href="page4.html" class="link">Задача 4</a></li>
+					  <li><a href="page5.html" class="link">Задача 5</a></li>
+					  <li><a href="page6.html" class="link">Задача 6</a></li>
+					  <li><a href="page7.html" class="link">Задача 7</a></li>
+					  <li><a href="page8.html" class="link">Задача 8</a></li>
+					  <li><a href="page9.html" class="link">Задача 9</a></li>
+					  <li><a href="page10.html" class="link">Задача 10</a></li>
+
+				</ul>
+			</div>
+
+			<p class="title">Задача 4.</p>
+			<p class="title">Программа, рассчитывающая стоимость и калорийность гамбургера.</p>
+
+			<div class="chooseBlock">
+				<p class="chooseTitle">Выбирите гамбургер:</p>
+				<input type="radio" name="r1" value="small" checked>Маленький (50 тугриков, 20 калорий)<br>
+				<input type="radio" name="r1" value="big">Большой (100 тугриков, 40 калорий)<br>
+
+				<p class="chooseTitle">Обязательная начинка:</p>
+				<input type="radio" name="r2" value="cheese" checked>Сыр (10 тугриков, 20 калорий)<br>
+				<input type="radio" name="r2" value="salad">Cалат(20 тугриков, 5 калорий)<br>
+				<input type="radio" name="r2" value="potato">Картофель (15 тугриков, 10 калорий)<br>
+
+				<p class="chooseTitle">Дополнительно:</p>
+				<input type="checkbox" name="r3" value="seas">Посыпать приправой (15 тугриков, 0 калорий)<br>
+				<input type="checkbox" name="r3" value="mayon">Полить майонезом (20 тугриков, 5 калорий)<br>
+
+				</br><input class="button" type="button" onclick="valid()" name="submit" value="Посчитать"></br>
+
+
+
+
+				</br>
+				<label id="lab" for="price">Цена:</label>
+				<span id="price"></span></br>
+				<label id="lab" for="kkal">Калорийность:</label>
+				<span id="kkal"></span> 
+			</div>
+			
+			
+
+		<div class="footer">
+			Никита Пилипчук, ИГУ ФСиР, 14-222 ВБ
+		</div>	
+		
+
+		</div>
+		
+	</div>
+	
+</body>
+</html>
