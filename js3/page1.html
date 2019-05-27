@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Задачи на работу с DOM</title>
+	<link href="css/style.css" rel="stylesheet">
+</head>
+<body>
+	<div class="out">
+
+		<div class="mainblock">
+
+			<div class="nav">
+				<ul id="navbar">
+					  <li><a href="page1.html" class="link">Задача 1</a></li>
+					  <li><a href="pages/page2.html" class="link">Задача 2</a></li>
+					  <li><a href="pages/page3.html" class="link">Задача 3</a></li>
+					  <li><a href="pages/page4.html" class="link">Задача 4</a></li>
+					  <li><a href="pages/page5.html" class="link">Задача 5</a></li>
+					  <li><a href="pages/page6.html" class="link">Задача 6</a></li>
+					  <li><a href="pages/page7.html" class="link">Задача 7</a></li>
+					  <li><a href="pages/page8.html" class="link">Задача 8</a></li>
+					  <li><a href="pages/page9.html" class="link">Задача 9</a></li>
+					  <li><a href="pages/page10.html" class="link">Задача 10</a></li>
+				</ul>
+			</div>
+
+			<p class="title">Задача 1.</p>
+			<p class="title">Программа, в которой отображается календарь на текущий месяц в виде таблицы. </p>
+
+			
+				<table id="calendar1">
+  					<thead>
+   						<tr><td colspan="7">
+    					<tr><td>Пн<td>Вт<td>Ср<td>Чт<td>Пт<td>Сб<td>Вс
+  					<tbody>
+				</table>
+
+<script>
+var D1 = new Date(),
+    D1last = new Date(D1.getFullYear(),D1.getMonth()+1,0).getDate(), 
+    D1Nlast = new Date(D1.getFullYear(),D1.getMonth(),D1last).getDay(), 
+    D1Nfirst = new Date(D1.getFullYear(),D1.getMonth(),1).getDay(), 
+    calendar1 = '<tr>',
+    month=["Январь","Февраль","Март","Апрель","Май","Июнь","Июль","Август","Сентябрь","Октябрь","Ноябрь","Декабрь"]; 
+
+
+if (D1Nfirst != 0) {
+  for(var  i = 1; i < D1Nfirst; i++) calendar1 += '<td>';
+}else{ 
+  for(var  i = 0; i < 6; i++) calendar1 += '<td>';
+}
+
+
+for(var  i = 1; i <= D1last; i++) {
+  if (i != D1.getDate()) {
+    calendar1 += '<td>' + i;
+  }else{
+    calendar1 += '<td id="today">' + i;  
+  }
+  if (new Date(D1.getFullYear(),D1.getMonth(),i).getDay() == 0) {  
+    calendar1 += '<tr>';
+  }
+}
+
+
+if (D1Nlast != 0) {
+  for(var  i = D1Nlast; i < 7; i++) calendar1 += '<td>';
+}
+
+document.querySelector('#calendar1 tbody').innerHTML = calendar1;
+document.querySelector('#calendar1 thead td:first-child').innerHTML = "Календарь на " + month[D1.getMonth()] + " " + D1.getFullYear();
+</script>
+			
+		<div class="footer">
+			Никита Пилипчук, ИГУ ФСиР, 14-222 ВБ
+		</div>
+
+		</div>		
+	</div>	
+</body>
+</html>
